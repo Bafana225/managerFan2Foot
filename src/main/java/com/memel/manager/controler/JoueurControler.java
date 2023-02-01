@@ -1,7 +1,7 @@
-package com.julien.manager.controler;
+package com.memel.manager.controler;
 
-import com.julien.manager.model.Joueur;
-import com.julien.manager.service.JoueurService;
+import com.memel.manager.model.Joueur;
+import com.memel.manager.service.JoueurService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

@@ -1,4 +1,4 @@
-package com.julien.manager;
+package com.memel.manager;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

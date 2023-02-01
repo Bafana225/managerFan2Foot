@@ -1,4 +1,4 @@
-package com.julien.manager.model;
+package com.memel.manager.model;
 
 import jakarta.persistence.*;
 

@@ -1,6 +1,6 @@
-package com.julien.manager.repository;
+package com.memel.manager.repository;
 
-import com.julien.manager.model.Joueur;
+import com.memel.manager.model.Joueur;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

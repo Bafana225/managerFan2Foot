@@ -1,8 +1,8 @@
-package com.julien.manager.service;
+package com.memel.manager.service;
 
-import com.julien.manager.exception.EquipeNotFoundException;
-import com.julien.manager.model.Equipe;
-import com.julien.manager.repository.EquipeRepository;
+import com.memel.manager.exception.EquipeNotFoundException;
+import com.memel.manager.model.Equipe;
+import com.memel.manager.repository.EquipeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

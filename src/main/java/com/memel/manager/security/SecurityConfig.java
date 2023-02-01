@@ -5,25 +5,37 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
+
 
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+
         http.csrf().disable();
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
-        // Lister tous les joueurs
+        // Afficher la liste des joueurs
         http.authorizeRequests().antMatchers("/joueur/all/**").hasAnyAuthority("ADMIN", "USER");
 
-        // trouver un joueur par son id
+        // Afficher un joueur par son id
         http.authorizeRequests().antMatchers(HttpMethod.GET, "joueur/**").hasAnyAuthority("ADMIN", "USER");
 
-        // modifier un joueur
+        // Ajouter un joueur
+        http.authorizeRequests().antMatchers(HttpMethod.POST,"/joueur/**").hasAuthority("ADMIN");
+
+        // Modifier un joueur
         http.authorizeRequests().antMatchers(HttpMethod.PUT,"/joueur/**").hasAuthority("ADMIN");
 
-        //supprimer un joueur
+        //Supprimer un joueur
         http.authorizeRequests().antMatchers(HttpMethod.DELETE,"/joueur/**").hasAuthority("ADMIN");
+
+        http.authorizeRequests().anyRequest().authenticated();
+
+        http.authorizeRequests().anyRequest().authenticated();
+        http.addFilterBefore(new JWTAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class);
     }
 }

@@ -8,34 +8,30 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 
-
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-
         http.csrf().disable();
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+        //consulter tous les produits
+        http.authorizeRequests().antMatchers("/api/all/**").hasAnyAuthority("ADMIN","USER");
 
-        // Afficher la liste des joueurs
-        http.authorizeRequests().antMatchers("/joueur/all/**").hasAnyAuthority("ADMIN", "USER");
+        //consulter un produit par son id
+        http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/**").hasAnyAuthority("ADMIN","USER");
 
-        // Afficher un joueur par son id
-        http.authorizeRequests().antMatchers(HttpMethod.GET, "joueur/**").hasAnyAuthority("ADMIN", "USER");
+        //ajouter un nouveau produit
+        http.authorizeRequests().antMatchers(HttpMethod.POST,"/api/**").hasAuthority("ADMIN");
 
-        // Ajouter un joueur
-        http.authorizeRequests().antMatchers(HttpMethod.POST,"/joueur/**").hasAuthority("ADMIN");
+        //modifier un produit
+        http.authorizeRequests().antMatchers(HttpMethod.PUT,"/api/**").hasAuthority("ADMIN");
 
-        // Modifier un joueur
-        http.authorizeRequests().antMatchers(HttpMethod.PUT,"/joueur/**").hasAuthority("ADMIN");
-
-        //Supprimer un joueur
-        http.authorizeRequests().antMatchers(HttpMethod.DELETE,"/joueur/**").hasAuthority("ADMIN");
-
-        http.authorizeRequests().anyRequest().authenticated();
+        //supprimer un produit
+        http.authorizeRequests().antMatchers(HttpMethod.DELETE,"/api/**").hasAuthority("ADMIN");
 
         http.authorizeRequests().anyRequest().authenticated();
         http.addFilterBefore(new JWTAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class);
+
     }
 }

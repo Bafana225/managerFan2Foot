@@ -1,0 +1,24 @@
+{
+    "nom": "Benzema",
+    "prenom": "Karim",
+    "note": 80,
+    "imageURL":"https://www.bootdey.com/app/webroot/img/Content/avatar/avatar1.png"
+}
+{
+    "nom": "Lloris",
+    "prenom": "Hugo",
+    "note": 70,
+    "imageURL":"https://www.bootdey.com/app/webroot/img/Content/avatar/avatar2.png"
+}
+{
+    "nom": "Mbappé",
+    "prenom": "Kylian",
+    "note": 80,
+    "imageURL":"https://www.bootdey.com/app/webroot/img/Content/avatar/avatar3.png"
+}
+{
+    "nom": "Bérard",
+    "prenom": "Julien",
+    "note": 50,
+    "imageURL":"https://www.bootdey.com/app/webroot/img/Content/avatar/avatar4.png"
+}

@@ -1,6 +1,6 @@
 package com.memel.manager.model;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 import java.io.Serializable;
 
